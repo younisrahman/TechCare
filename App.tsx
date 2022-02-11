@@ -4,10 +4,12 @@ import { StatusBar } from 'react-native';
 import codePush from 'react-native-code-push';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Navigation from './src/navigation';
+import SplashScreen from 'react-native-splash-screen';
 
 let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_START };
 const App = () => {
   useEffect(() => {
+    SplashScreen.hide();
     codePush.sync(
       {
         installMode: codePush.InstallMode.IMMEDIATE,

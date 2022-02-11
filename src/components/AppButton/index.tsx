@@ -4,95 +4,60 @@ import {
   StyleProp,
   ViewStyle,
   StyleSheet,
+  View,
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-// import Icon from 'react-native-vector-icons/FontAwesome';
-import { Colors, FontFamily, FontSize } from '@app/config/theme';
-import { H7 } from '@app/styles/typography';
+import { BodyMedium } from '@app/styles/typography';
+import LinearGradient from 'react-native-linear-gradient';
+import { Colors } from '@app/config/theme';
+import { Shadow } from '@app/styles/Shadow';
 
 interface AppButtonProp {
+  title: string;
   textStyle?: any;
   style?: StyleProp<ViewStyle>;
   onPress?: () => void;
-  children?: any;
-  isBorder?: boolean;
-  isSkip?: boolean;
 }
 // LoginRegisterButton
 const CustomButton: React.FC<AppButtonProp> = ({
   style,
   onPress,
-  children,
-  isBorder = false,
+  textStyle,
+  title = 'Buttton',
 }) => {
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={[
-        styles.loginRegisterButtonProceed,
-        isBorder === true
-          ? { backgroundColor: Colors.light4 }
-          : { backgroundColor: Colors.primaryPurple },
-        style,
-      ]}
-    >
-      <H7
-        style={[
-          styles.textChildrenStyling,
-          // style,
-          isBorder ? { color: Colors.primaryPurple } : { color: Colors.light4 },
-        ]}
-      >
-        {children}
-      </H7>
-    </TouchableOpacity>
-  );
-};
-
-// CircleButton
-const CircleButton: React.FC<AppButtonProp> = ({
-  style,
-  onPress,
-  children,
-}) => {
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={[styles.circleButtonProceed, style]}
-    >
-      {children}
-    </TouchableOpacity>
+    <View style={[styles.ButtonStyle, style, Shadow.shadow]}>
+      <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
+        <LinearGradient
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          locations={[0, 0.26, 0.51, 1]}
+          colors={['#667EEA', '#658DF0', '#659BF5', '#64B6FF']}
+          style={[styles.ButtonStyle, style]}
+        >
+          <BodyMedium style={[styles.ButtonTextStyle, textStyle]}>
+            {title}
+          </BodyMedium>
+        </LinearGradient>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  loginRegisterButtonProceed: {
+  ButtonStyle: {
+    height: hp(6.5),
+    width: wp(70),
+    borderRadius: hp(1.5),
     justifyContent: 'center',
     alignItems: 'center',
-    width: wp(90),
-    height: hp(7),
-    borderRadius: hp(1.2),
-    // backgroundColor: Colors.primaryPurple,
+    backgroundColor: '#fff',
   },
-  circleButtonProceed: {
-    height: hp(7.5),
-    width: hp(7.5),
-    backgroundColor: Colors.primaryPurple,
-    borderRadius: hp(4),
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-  },
-  textChildrenStyling: {
-    color: Colors.light4,
-    fontFamily: FontFamily.RubikR,
-    fontSize: FontSize.M,
+  ButtonTextStyle: {
+    color: Colors.White,
   },
 });
-
-export { CustomButton, CircleButton };
-
-// export default TestButton;
+export { CustomButton };

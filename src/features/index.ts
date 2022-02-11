@@ -1,0 +1,1 @@
+export { movieSlice } from './Movie';

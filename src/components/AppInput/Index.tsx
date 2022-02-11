@@ -6,17 +6,13 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native';
-// import { CircleButton } from '@app/components';
-// import FontAwsome from 'react-native-vector-icons/FontAwesome';
-// import AntDesign from 'react-native-vector-icons/AntDesign';
-// import { RFValue } from 'react-native-responsive-fontsize';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import { Shadow } from '@app/styles/Shadow';
 import { H7 } from '@app/styles/typography';
-import { Colors, Padding } from '@app/theme';
+import { Padding } from '@app/theme';
 
 interface nameStyling {
   titleName?: string;
@@ -49,14 +45,12 @@ const styles = StyleSheet.create({
     marginVertical: hp(1),
   },
   textStyling: {
-    color: Colors.primaryPurple,
     fontFamily: 'Inter',
   },
   firstTextInputStyling: {
     minHeight: hp(5),
     width: '100%',
     borderRadius: wp(2),
-    backgroundColor: Colors.light3,
     paddingHorizontal: Padding.paddingHorizontal,
     marginVertical: hp(1),
   },
