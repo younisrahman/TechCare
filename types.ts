@@ -1,3 +1,14 @@
+export type ProductTypes = {
+  category: string;
+  description: string;
+  id: number;
+  image: string;
+  price: number;
+  quantity?: number;
+  rating: { count: number, rate: number };
+  title: string;
+};
+
 export type RootStackParamList = {
   Root: undefined;
   Splash: undefined;
@@ -17,3 +28,4 @@ export type HomeTabParamList = {
 export type LatestTabParamList = {
   LatestScreen: undefined;
 };
+
