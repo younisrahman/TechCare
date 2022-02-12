@@ -3,3 +3,4 @@ export { default as HomeScreen } from './HomeScreen';
 export { default as OtpVerifyScreen } from './OtpVerifyScreen';
 export { default as OnboardingScreen } from './OnboardingScreen';
 export { default as CheckoutScreen } from './CheckoutScreen';
+export { default as ProductDetails } from './ProductDetails';

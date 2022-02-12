@@ -6,6 +6,7 @@ const Colors = {
   Pink3: '#FEB8C1',
   Pink4: '#FFE6E9',
   Blue: '#3D4ABA',
+  PriceText: '#374ABE',
   Green: '#07E092',
   PurpleRadial:
     'radial-gradient(100% 100% at 142.5% 13.75%, #FFFFFF 0%, #7012CE 100%)',

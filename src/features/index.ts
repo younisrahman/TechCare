@@ -1,1 +1,2 @@
-export { movieSlice } from './Movie';
+export { productSlice } from './Product';
+export { CartSlice } from './Cart';

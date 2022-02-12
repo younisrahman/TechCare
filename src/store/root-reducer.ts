@@ -1,9 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import { movieSlice } from '@app/features';
+import { productSlice, CartSlice } from '@app/features';
 
 const rootReducer = combineReducers({
-  movies: movieSlice.reducer,
+  products: productSlice.reducer,
+  cart: CartSlice.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

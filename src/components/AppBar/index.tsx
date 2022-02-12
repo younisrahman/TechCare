@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -9,11 +16,12 @@ import { Colors } from '@app/config/theme';
 interface AppBarProp {
   isDrawed?: boolean;
   onPress?: () => void;
+  style?: StyleProp<ViewStyle>;
 }
 
-const AppBar: React.FC<AppBarProp> = ({ isDrawed = false, onPress }) => {
+const AppBar: React.FC<AppBarProp> = ({ isDrawed = false, onPress, style }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <TouchableOpacity style={styles.button} onPress={onPress}>
         {isDrawed ? (
           <Image source={require('@app/assets/images/Drawer.png')} />

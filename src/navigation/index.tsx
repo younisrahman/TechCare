@@ -3,7 +3,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { RootStackParamList } from '../../types';
 import DrawerNavigator from './DrawerNavigator';
-import { OtpVerifyScreen, LoginScreen, OnboardingScreen } from '../screens';
+import {
+  OtpVerifyScreen,
+  LoginScreen,
+  OnboardingScreen,
+  ProductDetails,
+} from '../screens';
 
 export default function Navigation() {
   return (
@@ -31,6 +36,11 @@ function RootNavigator() {
       <Stack.Screen
         name="OtpVerifyScreen"
         component={OtpVerifyScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ProductDetails"
+        component={ProductDetails}
         options={{ headerShown: false }}
       />
       <Stack.Screen

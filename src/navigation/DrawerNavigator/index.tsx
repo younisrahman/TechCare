@@ -7,8 +7,16 @@ const Drawer = createDrawerNavigator();
 export default function DrawerNavigator() {
   return (
     <Drawer.Navigator initialRouteName="HomeScreen">
-      <Drawer.Screen name="HomeScreen" component={HomeScreen} />
-      <Drawer.Screen name="CheckoutScreen" component={CheckoutScreen} />
+      <Drawer.Screen
+        options={{ headerShown: false }}
+        name="HomeScreen"
+        component={HomeScreen}
+      />
+      <Drawer.Screen
+        options={{ headerShown: false }}
+        name="CheckoutScreen"
+        component={CheckoutScreen}
+      />
     </Drawer.Navigator>
   );
 }

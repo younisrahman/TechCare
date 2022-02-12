@@ -19,11 +19,13 @@ interface AppButtonProp {
   title: string;
   textStyle?: any;
   style?: StyleProp<ViewStyle>;
+  gradientStyle?: StyleProp<ViewStyle>;
   onPress?: () => void;
 }
 // LoginRegisterButton
 const CustomButton: React.FC<AppButtonProp> = ({
   style,
+  gradientStyle,
   onPress,
   textStyle,
   title = 'Buttton',
@@ -36,7 +38,7 @@ const CustomButton: React.FC<AppButtonProp> = ({
           end={{ x: 1, y: 0 }}
           locations={[0, 0.26, 0.51, 1]}
           colors={['#667EEA', '#658DF0', '#659BF5', '#64B6FF']}
-          style={[styles.ButtonStyle, style]}
+          style={[styles.ButtonStyle, gradientStyle]}
         >
           <BodyMedium style={[styles.ButtonTextStyle, textStyle]}>
             {title}
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
   ButtonStyle: {
     height: hp(6.5),
     width: wp(70),
-    borderRadius: hp(1.5),
+    borderRadius: hp(1),
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
