@@ -7060,10 +7060,10 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
-"react-native-countdown-circle-timer@^3.0.6":
-  "integrity" "sha512-i/vZvJ8okD1FNF+dD3VU8otKkmOa+wiGeWIROrhLkADBnpMpfJ2u3nzLuZF9xBeVUb3ohPkGi1wqjXwnVS9/EQ=="
-  "resolved" "https://registry.npmjs.org/react-native-countdown-circle-timer/-/react-native-countdown-circle-timer-3.0.6.tgz"
-  "version" "3.0.6"
+"react-native-countdown-circle-timer@^3.0.8":
+  "integrity" "sha512-HmuASeSlT8+eIVf5dRK402iCon/xQXYUAhzgFXgQWljYFoR28gyDHUcR0kQBG309yZivHPS6W+NiRm3NRdT/VQ=="
+  "resolved" "https://registry.npmjs.org/react-native-countdown-circle-timer/-/react-native-countdown-circle-timer-3.0.8.tgz"
+  "version" "3.0.8"
 
 "react-native-countdown-component@^2.7.1":
   "integrity" "sha512-H7D/YvMjY1hCJf9xFrNh5CsIwkcel/Suno2gYR6ulWwoa2xnUgmltFWoMyEIODsUy7lIK1KCPm+Zn26QajbRaw=="

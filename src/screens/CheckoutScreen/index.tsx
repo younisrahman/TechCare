@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -6,10 +6,11 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 
-import { AppBar } from '@app/components';
+import { AppBar, CustomButton } from '@app/components';
 import { Colors, Padding } from '@app/config/theme';
-import { BodyLarge } from '@app/styles/typography';
+import { BodyLarge, BodySmall } from '@app/styles/typography';
 import CartCard from './CartCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '@app/store/root-reducer';
@@ -17,19 +18,16 @@ import { RootState } from '@app/store/root-reducer';
 const CheckoutScreen = () => {
   const navigation = useNavigation();
   const { cart } = useSelector((state: RootState) => state.cart);
-  useEffect(() => {
-    console.log('cart====================================');
-    console.log(cart);
-    console.log('====================================cart');
-  }, []);
+  const [countdownKey, setCountdownKey] = useState(0);
 
+  let counter = 20;
   let subTotal = 0;
-  let discount = 5;
-  let shipping = 10;
   cart.forEach(item => {
     subTotal += item.price * item.quantity;
   });
-  // let total = subTotal - discount + shipping;
+  let discount = subTotal === 0 ? 0 : 5;
+  let shipping = subTotal === 0 ? 0 : 10;
+  let total = subTotal - (subTotal / 100) * discount + shipping;
 
   const PriceShow = ({ title, price }) => (
     <View style={styles.priceContainer}>
@@ -37,8 +35,37 @@ const CheckoutScreen = () => {
       <BodyLarge style={styles.priceShow}>{price}</BodyLarge>
     </View>
   );
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      setCountdownKey(Math.random());
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
+      <View style={styles.counterContainer}>
+        <CountdownCircleTimer
+          key={countdownKey}
+          isPlaying
+          onComplete={() => {
+            navigation.goBack();
+          }}
+          duration={counter}
+          colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+          colorsTime={[7, 5, 2, 0]}
+          size={hp(5)}
+          strokeWidth={hp(0.5)}
+          trailStrokeWidth={hp(0.5)}
+        >
+          {({ remainingTime }) => (
+            <BodySmall style={{ fontSize: RFValue(15) }}>
+              {remainingTime}
+            </BodySmall>
+          )}
+        </CountdownCircleTimer>
+      </View>
       <AppBar
         style={{ marginHorizontal: Padding.paddingHorizontal }}
         onPress={() => navigation.goBack()}
@@ -59,7 +86,13 @@ const CheckoutScreen = () => {
         <PriceShow title="Discount" price={`${discount}%`} />
         <PriceShow title="Shipping" price={`$${shipping}.00`} />
         <View style={[styles.HorizontalLine, { marginVertical: hp(2) }]} />
-        <PriceShow title="Shipping" price={`$${shipping}.00`} />
+        <PriceShow title="Total" price={`$${total.toFixed(2)}.00`} />
+        <CustomButton
+          style={[styles.backButton, { marginTop: hp(6) }]}
+          gradientStyle={styles.backButton}
+          onPress={() => navigation.goBack()}
+          title="Back to Home"
+        />
       </ScrollView>
     </View>
   );
@@ -68,8 +101,12 @@ const CheckoutScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingHorizontal: Padding.paddingHorizontal,
     backgroundColor: Colors.White,
+  },
+  counterContainer: {
+    position: 'absolute',
+    right: Padding.paddingHorizontal,
+    top: hp(1),
   },
   body: {
     width: '100%',
@@ -103,5 +140,9 @@ const styles = StyleSheet.create({
     color: Colors.Grey1,
   },
   priceShow: {},
+  backButton: {
+    width: wp(80),
+    marginHorizontal: wp(10),
+  },
 });
 export default CheckoutScreen;

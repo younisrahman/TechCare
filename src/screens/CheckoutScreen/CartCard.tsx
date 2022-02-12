@@ -7,15 +7,16 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import { useDispatch } from 'react-redux';
+import { addtoCart, removefromCart } from '@app/features/Cart/reducer';
 
 interface CartCardProps {
   product: object;
 }
 
 const CartCard: React.FC<CartCardProps> = ({ product }) => {
-  console.log('====================================');
-  console.log(product);
-  console.log('====================================');
+  const dispatch = useDispatch();
+
   return (
     <View style={[styles.container, Shadow.shadow]}>
       <Image source={{ uri: product.image }} style={styles.imageStyle} />
@@ -29,11 +30,17 @@ const CartCard: React.FC<CartCardProps> = ({ product }) => {
           {product.price}
         </BodyMedium>
         <View style={styles.cartControl}>
-          <TouchableOpacity style={styles.cartButton}>
+          <TouchableOpacity
+            onPress={() => dispatch(removefromCart(product))}
+            style={styles.cartButton}
+          >
             <BodyMedium>-</BodyMedium>
           </TouchableOpacity>
           <BodyMedium>{product.quantity}</BodyMedium>
-          <TouchableOpacity style={styles.cartButton}>
+          <TouchableOpacity
+            onPress={() => dispatch(addtoCart(product))}
+            style={styles.cartButton}
+          >
             <BodyMedium>+</BodyMedium>
           </TouchableOpacity>
         </View>
