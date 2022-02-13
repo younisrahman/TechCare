@@ -1,15 +1,13 @@
 const Colors = {
   greenDark: '#307470',
-  BlueLinear:
-    'linear-gradient(162.05deg, #3D4ABA 17.03%, rgba(61, 74, 186, 0.7) 112.87%)',
+
   Pink: '#FD5B71',
   Pink3: '#FEB8C1',
   Pink4: '#FFE6E9',
   Blue: '#3D4ABA',
   PriceText: '#374ABE',
   Green: '#07E092',
-  PurpleRadial:
-    'radial-gradient(100% 100% at 142.5% 13.75%, #FFFFFF 0%, #7012CE 100%)',
+
   LightGrey: '#FAFAFF',
   Black: '#070417',
   Purple: '#6f10ce',

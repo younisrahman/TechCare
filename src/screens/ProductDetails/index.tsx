@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, Image, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -16,12 +15,11 @@ import { addtoCart } from '@app/features/Cart/reducer';
 import { ProductDetailsNavigationTypes } from 'types';
 
 const ProductDetails = ({
+  navigation,
   route: {
     params: { product },
   },
 }: ProductDetailsNavigationTypes) => {
-  const navigation = useNavigation();
-
   const dispatch = useDispatch();
 
   return (
@@ -71,6 +69,7 @@ const ProductDetails = ({
           title="Add to Cart"
           onPress={() => {
             dispatch(addtoCart({ ...product, quantity: 1 }));
+            navigation.navigate('CheckoutScreen');
           }}
         />
       </View>

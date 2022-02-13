@@ -57,7 +57,7 @@ const CheckoutScreen = () => {
           key={countdownKey}
           isPlaying
           onComplete={() => {
-            navigation.goBack();
+            navigation.navigate('HomeScreen');
           }}
           duration={counter}
           colors={['#004777', '#F7B801', '#A30000', '#A30000']}

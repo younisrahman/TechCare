@@ -13,6 +13,8 @@ import { Colors, Padding } from '@app/config/theme';
 import { getProducts, getCategory } from '@app/features/Product/reducer';
 import { RootState } from '@app/store/root-reducer';
 import Header from './Header';
+import { ActivityIndicator } from 'react-native-paper';
+import { BodyLarge } from '@app/styles/typography';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -36,15 +38,22 @@ const HomeScreen = () => {
         onPress={() => navigation.openDrawer()}
         style={{ paddingHorizontal: Padding.paddingHorizontal }}
       />
-      <FlatList
-        ListHeaderComponent={Header}
-        scrollEventThrottle={16}
-        data={Products?.reverse()}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        numColumns={2}
-        contentContainerStyle={{ paddingBottom: hp(10) }}
-      />
+      {Products.length <= 0 ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size={'large'} color={Colors.Blue} />
+          <BodyLarge>Please Wait....</BodyLarge>
+        </View>
+      ) : (
+        <FlatList
+          ListHeaderComponent={Header}
+          scrollEventThrottle={16}
+          data={Products?.reverse()}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          numColumns={2}
+          contentContainerStyle={{ paddingBottom: hp(10) }}
+        />
+      )}
     </View>
   );
 };
@@ -66,6 +75,11 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     marginTop: hp(8),
+  },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 export default HomeScreen;
