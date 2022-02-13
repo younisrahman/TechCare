@@ -39,7 +39,7 @@ const HomeScreen = () => {
       <FlatList
         ListHeaderComponent={Header}
         scrollEventThrottle={16}
-        data={Products.reverse()}
+        data={Products?.reverse()}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         numColumns={2}

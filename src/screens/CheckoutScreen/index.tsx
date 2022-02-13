@@ -15,6 +15,10 @@ import CartCard from './CartCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '@app/store/root-reducer';
 
+interface PriceShowProps {
+  price: string;
+  title: string;
+}
 const CheckoutScreen = () => {
   const navigation = useNavigation();
   const { cart } = useSelector((state: RootState) => state.cart);
@@ -22,14 +26,17 @@ const CheckoutScreen = () => {
 
   let counter = 20;
   let subTotal = 0;
+
   cart.forEach(item => {
-    subTotal += item.price * item.quantity;
+    if (item?.quantity) {
+      subTotal += item.price * item?.quantity;
+    }
   });
   let discount = subTotal === 0 ? 0 : 5;
   let shipping = subTotal === 0 ? 0 : 10;
   let total = subTotal - (subTotal / 100) * discount + shipping;
 
-  const PriceShow = ({ title, price }) => (
+  const PriceShow = ({ title, price }: PriceShowProps) => (
     <View style={styles.priceContainer}>
       <BodyLarge style={styles.priceTitle}>{title}</BodyLarge>
       <BodyLarge style={styles.priceShow}>{price}</BodyLarge>

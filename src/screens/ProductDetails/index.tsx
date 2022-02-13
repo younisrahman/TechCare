@@ -13,11 +13,13 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { useDispatch } from 'react-redux';
 import { addtoCart } from '@app/features/Cart/reducer';
 
+import { ProductDetailsNavigationTypes } from 'types';
+
 const ProductDetails = ({
   route: {
     params: { product },
   },
-}) => {
+}: ProductDetailsNavigationTypes) => {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();

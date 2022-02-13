@@ -1,6 +1,6 @@
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
 import { RootStackParamList } from '../../types';
 import DrawerNavigator from './DrawerNavigator';
 import {
@@ -22,7 +22,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator initialRouteName="OnboardingScreen">
       <Stack.Screen
         name="OnboardingScreen"
         component={OnboardingScreen}

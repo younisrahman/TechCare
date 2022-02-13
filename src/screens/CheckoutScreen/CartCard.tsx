@@ -10,8 +10,9 @@ import {
 import { useDispatch } from 'react-redux';
 import { addtoCart, removefromCart } from '@app/features/Cart/reducer';
 
+import { ProductTypes } from '../../../types';
 interface CartCardProps {
-  product: object;
+  product: ProductTypes;
 }
 
 const CartCard: React.FC<CartCardProps> = ({ product }) => {

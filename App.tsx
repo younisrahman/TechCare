@@ -28,3 +28,5 @@ const App = () => {
 };
 
 export default codePush(codePushOptions)(App);
+
+// keystore password: 123456

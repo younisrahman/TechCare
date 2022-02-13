@@ -7,14 +7,16 @@ import {
 import { Rating } from 'react-native-ratings';
 import { BodySmall } from '@app/styles/typography';
 import { useNavigation } from '@react-navigation/native';
-
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { ProductTypes, RootStackParamList } from '../../../types';
 interface ProductCardProp {
-  product: object;
+  product: ProductTypes;
   style?: object;
 }
 
 const ProductCard: React.FC<ProductCardProp> = ({ product, style }) => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
     <TouchableOpacity
       onPress={() => {

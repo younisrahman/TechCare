@@ -26,7 +26,7 @@ const Header = () => {
         scrollEventThrottle={16}
         showsHorizontalScrollIndicator={false}
       >
-        {Categories.reverse().map((category, index) => (
+        {Categories?.reverse().map((category, index) => (
           <CategoryCard
             title={category}
             image={index.toString()}
@@ -49,7 +49,7 @@ const Header = () => {
         scrollEventThrottle={16}
         showsHorizontalScrollIndicator={false}
       >
-        {products.map((product, index) => (
+        {products?.map((product, index) => (
           <ProductCard
             product={product}
             key={index}

@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Axios from 'axios';
-
+import { ProductTypes } from '../../../types';
 interface IState {
-  products: object[];
-  cart: object[];
+  products: ProductTypes[];
   categories: string[];
 }
 

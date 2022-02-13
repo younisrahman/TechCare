@@ -1,6 +1,5 @@
 import { Colors } from '@app/config/theme';
 import { BodyLarge } from '@app/styles/typography';
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { CustomButton } from '@app/components';
 import { View, StyleSheet, Image } from 'react-native';
@@ -8,9 +7,8 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-
-const OnboardingScreen = () => {
-  const navigation = useNavigation();
+import { OnboardingScreenNavigationProps } from 'types';
+const OnboardingScreen = ({ navigation }: OnboardingScreenNavigationProps) => {
   return (
     <View style={styles.container}>
       <BodyLarge style={{ color: Colors.Grey1 }}>Welcome to Bolt</BodyLarge>
